@@ -1,9 +1,6 @@
 package com.sudhanshu.loanmanagement.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
@@ -14,6 +11,8 @@ public class LoginResponseDto {
     private String username;
 
     private String role;
+
+    private String token;
 
     private String message;
 
