@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,6 +18,7 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
     public ResponseEntity<ApiResponse> addCustomer(
             @Valid @RequestBody CustomerRequestDto dto) {
 
@@ -32,6 +34,7 @@ public class CustomerController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER','CUSTOMER')")
     public ResponseEntity<ApiResponse> getAllCustomers() {
 
         ApiResponse response = ApiResponse.builder()
@@ -44,6 +47,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{customerId}")
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER','CUSTOMER')")
     public ResponseEntity<ApiResponse> getCustomerById(
             @PathVariable Long customerId) {
 
@@ -57,6 +61,7 @@ public class CustomerController {
     }
 
     @PutMapping("/{customerId}")
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
     public ResponseEntity<ApiResponse> updateCustomer(
             @PathVariable Long customerId,
             @Valid @RequestBody CustomerRequestDto dto) {
@@ -72,6 +77,7 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{customerId}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ApiResponse> deleteCustomer(
             @PathVariable Long customerId) {
 
