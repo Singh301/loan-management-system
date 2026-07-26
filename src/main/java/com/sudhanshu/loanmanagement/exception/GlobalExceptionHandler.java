@@ -3,14 +3,18 @@ package com.sudhanshu.loanmanagement.exception;
 import com.sudhanshu.loanmanagement.dto.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    /**
+     * Customer Already Exists Exception
+     */
     @ExceptionHandler(CustomerAlreadyExistsException.class)
-    public ResponseEntity<ApiResponse> handleCustomerAlreadyExists(
+    public ResponseEntity<ApiResponse> handleCustomerAlreadyExistsException(
             CustomerAlreadyExistsException ex) {
 
         ApiResponse response = ApiResponse.builder()
@@ -19,11 +23,30 @@ public class GlobalExceptionHandler {
                 .data(null)
                 .build();
 
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
     }
 
+    /**
+     * User Already Exists Exception
+     */
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ResponseEntity<ApiResponse> handleUserAlreadyExistsException(
+            UserAlreadyExistsException ex) {
+
+        ApiResponse response = ApiResponse.builder()
+                .success(false)
+                .message(ex.getMessage())
+                .data(null)
+                .build();
+
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
+    }
+
+    /**
+     * Resource Not Found Exception
+     */
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ApiResponse> handleResourceNotFound(
+    public ResponseEntity<ApiResponse> handleResourceNotFoundException(
             ResourceNotFoundException ex) {
 
         ApiResponse response = ApiResponse.builder()
@@ -32,9 +55,32 @@ public class GlobalExceptionHandler {
                 .data(null)
                 .build();
 
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
+    /**
+     * Validation Exception
+     */
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ApiResponse> handleValidationException(
+            MethodArgumentNotValidException ex) {
+
+        String errorMessage = ex.getBindingResult()
+                .getFieldError()
+                .getDefaultMessage();
+
+        ApiResponse response = ApiResponse.builder()
+                .success(false)
+                .message(errorMessage)
+                .data(null)
+                .build();
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
+    /**
+     * Generic Exception
+     */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse> handleException(Exception ex) {
 
@@ -44,7 +90,6 @@ public class GlobalExceptionHandler {
                 .data(null)
                 .build();
 
-        return new ResponseEntity<>(response,
-                HttpStatus.INTERNAL_SERVER_ERROR);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
 }
