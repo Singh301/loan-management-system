@@ -2,6 +2,8 @@ package com.sudhanshu.loanmanagement.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -41,4 +43,13 @@ public class Customer {
     private String state;
 
     private String pinCode;
+
+    @OneToMany(
+            mappedBy = "customer",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
+    @Builder.Default
+    private List<Loan> loans = new ArrayList<>();
 }
