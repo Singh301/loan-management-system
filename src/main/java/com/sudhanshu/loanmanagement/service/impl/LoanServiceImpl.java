@@ -12,6 +12,7 @@ import com.sudhanshu.loanmanagement.repository.LoanRepository;
 import com.sudhanshu.loanmanagement.service.LoanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.sudhanshu.loanmanagement.dto.LoanStatusUpdateDto;
 
 import java.util.List;
 
@@ -134,6 +135,39 @@ public class LoanServiceImpl implements LoanService {
         loan.setInterestRate(requestDto.getInterestRate());
         loan.setTenureMonths(requestDto.getTenureMonths());
         loan.setRemarks(requestDto.getRemarks());
+
+        Loan updatedLoan = loanRepository.save(loan);
+
+        return mapToResponseDto(updatedLoan);
+    }
+
+    @Override
+    public LoanResponseDto updateLoanStatus(
+            Long loanId,
+            LoanStatusUpdateDto requestDto) {
+
+        Loan loan = loanRepository.findById(loanId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Loan not found with id : " + loanId));
+
+        if (loan.getLoanStatus() != LoanStatus.PENDING) {
+            throw new LoanAlreadyProcessedException(
+                    "Loan has already been processed.");
+        }
+
+        if (requestDto.getLoanStatus() == LoanStatus.PENDING) {
+            throw new IllegalArgumentException(
+                    "Loan status cannot be updated to PENDING.");
+        }
+
+        loan.setLoanStatus(requestDto.getLoanStatus());
+
+        if (requestDto.getRemarks() != null &&
+                !requestDto.getRemarks().isBlank()) {
+
+            loan.setRemarks(requestDto.getRemarks());
+        }
 
         Loan updatedLoan = loanRepository.save(loan);
 

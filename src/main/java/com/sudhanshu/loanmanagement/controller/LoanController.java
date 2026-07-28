@@ -3,6 +3,7 @@ package com.sudhanshu.loanmanagement.controller;
 import com.sudhanshu.loanmanagement.dto.ApiResponse;
 import com.sudhanshu.loanmanagement.dto.LoanRequestDto;
 import com.sudhanshu.loanmanagement.dto.LoanResponseDto;
+import com.sudhanshu.loanmanagement.dto.LoanStatusUpdateDto;
 import com.sudhanshu.loanmanagement.service.LoanService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -85,6 +86,21 @@ public class LoanController {
                 .success(true)
                 .message("Loan updated successfully.")
                 .data(loanService.updateLoan(loanId, requestDto))
+                .build();
+
+        return ResponseEntity.ok(response);
+    }
+
+    @PatchMapping("/{loanId}/status")
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
+    public ResponseEntity<ApiResponse> updateLoanStatus(
+            @PathVariable Long loanId,
+            @Valid @RequestBody LoanStatusUpdateDto requestDto) {
+
+        ApiResponse response = ApiResponse.builder()
+                .success(true)
+                .message("Loan status updated successfully.")
+                .data(loanService.updateLoanStatus(loanId, requestDto))
                 .build();
 
         return ResponseEntity.ok(response);
