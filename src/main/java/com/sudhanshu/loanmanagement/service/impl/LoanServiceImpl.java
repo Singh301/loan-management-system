@@ -10,6 +10,7 @@ import com.sudhanshu.loanmanagement.exception.ResourceNotFoundException;
 import com.sudhanshu.loanmanagement.repository.CustomerRepository;
 import com.sudhanshu.loanmanagement.repository.LoanRepository;
 import com.sudhanshu.loanmanagement.service.LoanService;
+import com.sudhanshu.loanmanagement.util.EmiCalculator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.sudhanshu.loanmanagement.dto.LoanStatusUpdateDto;
@@ -22,6 +23,8 @@ public class LoanServiceImpl implements LoanService {
     private final LoanRepository loanRepository;
 
     private final CustomerRepository customerRepository;
+
+    private final EmiCalculator emiCalculator;
 
     @Override
     public LoanResponseDto applyLoan(LoanRequestDto requestDto) {
@@ -151,22 +154,38 @@ public class LoanServiceImpl implements LoanService {
                         new ResourceNotFoundException(
                                 "Loan not found with id : " + loanId));
 
+        // Loan can be processed only once
         if (loan.getLoanStatus() != LoanStatus.PENDING) {
             throw new LoanAlreadyProcessedException(
                     "Loan has already been processed.");
         }
 
+        // PENDING is not a valid update status
         if (requestDto.getLoanStatus() == LoanStatus.PENDING) {
             throw new IllegalArgumentException(
                     "Loan status cannot be updated to PENDING.");
         }
 
+        // Update status
         loan.setLoanStatus(requestDto.getLoanStatus());
 
+        // Update remarks if provided
         if (requestDto.getRemarks() != null &&
                 !requestDto.getRemarks().isBlank()) {
 
             loan.setRemarks(requestDto.getRemarks());
+        }
+
+        // Calculate EMI only when loan is approved
+        if (requestDto.getLoanStatus() == LoanStatus.APPROVED) {
+
+            loan.setEmi(
+                    emiCalculator.calculateEmi(
+                            loan.getLoanAmount(),
+                            loan.getInterestRate(),
+                            loan.getTenureMonths()
+                    )
+            );
         }
 
         Loan updatedLoan = loanRepository.save(loan);
