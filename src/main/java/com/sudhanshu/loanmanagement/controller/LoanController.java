@@ -4,6 +4,8 @@ import com.sudhanshu.loanmanagement.dto.ApiResponse;
 import com.sudhanshu.loanmanagement.dto.LoanRequestDto;
 import com.sudhanshu.loanmanagement.dto.LoanResponseDto;
 import com.sudhanshu.loanmanagement.dto.LoanStatusUpdateDto;
+import com.sudhanshu.loanmanagement.entity.LoanStatus;
+import com.sudhanshu.loanmanagement.entity.LoanType;
 import com.sudhanshu.loanmanagement.service.LoanService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -105,5 +107,58 @@ public class LoanController {
 
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/paged")
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
+    public ResponseEntity<ApiResponse> getLoansWithPagination(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "loanId") String sortBy,
+            @RequestParam(defaultValue = "asc") String direction) {
+
+        ApiResponse response = ApiResponse.builder()
+                .success(true)
+                .message("Loans fetched successfully.")
+                .data(loanService.getLoansWithPagination(
+                        page, size, sortBy, direction))
+                .build();
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/status/{status}")
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
+    public ResponseEntity<ApiResponse> getLoansByStatus(
+            @PathVariable LoanStatus status,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size) {
+
+        ApiResponse response = ApiResponse.builder()
+                .success(true)
+                .message("Loans fetched successfully.")
+                .data(loanService.getLoansByStatus(
+                        status, page, size))
+                .build();
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/type/{loanType}")
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
+    public ResponseEntity<ApiResponse> getLoansByType(
+            @PathVariable LoanType loanType,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size) {
+
+        ApiResponse response = ApiResponse.builder()
+                .success(true)
+                .message("Loans fetched successfully.")
+                .data(loanService.getLoansByType(
+                        loanType, page, size))
+                .build();
+
+        return ResponseEntity.ok(response);
+    }
+
 
 }

@@ -14,6 +14,11 @@ import com.sudhanshu.loanmanagement.util.EmiCalculator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.sudhanshu.loanmanagement.dto.LoanStatusUpdateDto;
+import com.sudhanshu.loanmanagement.entity.LoanType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -191,6 +196,37 @@ public class LoanServiceImpl implements LoanService {
         Loan updatedLoan = loanRepository.save(loan);
 
         return mapToResponseDto(updatedLoan);
+    }
+
+    @Override
+    public Page<LoanResponseDto> getLoansWithPagination(int page, int size, String sortBy, String direction) {
+
+        Sort sort = direction.equalsIgnoreCase("desc")
+                ? Sort.by(sortBy).descending()
+                : Sort.by(sortBy).ascending();
+
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        return loanRepository.findAll(pageable)
+                .map(this::mapToResponseDto);
+    }
+
+    @Override
+    public Page<LoanResponseDto> getLoansByStatus(LoanStatus loanStatus, int page, int size) {
+
+        Pageable pageable = PageRequest.of(page, size);
+
+        return loanRepository.findByLoanStatus(loanStatus, pageable)
+                .map(this::mapToResponseDto);
+    }
+
+    @Override
+    public Page<LoanResponseDto> getLoansByType(LoanType loanType, int page, int size) {
+
+        Pageable pageable = PageRequest.of(page, size);
+
+        return loanRepository.findByLoanType(loanType, pageable)
+                .map(this::mapToResponseDto);
     }
 
 }
