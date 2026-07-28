@@ -75,5 +75,19 @@ public class LoanController {
         return ResponseEntity.ok(response);
     }
 
+    @PutMapping("/{loanId}")
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
+    public ResponseEntity<ApiResponse> updateLoan(
+            @PathVariable Long loanId,
+            @Valid @RequestBody LoanRequestDto requestDto) {
+
+        ApiResponse response = ApiResponse.builder()
+                .success(true)
+                .message("Loan updated successfully.")
+                .data(loanService.updateLoan(loanId, requestDto))
+                .build();
+
+        return ResponseEntity.ok(response);
+    }
 
 }

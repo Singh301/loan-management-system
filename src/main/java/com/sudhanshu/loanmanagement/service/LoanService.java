@@ -14,4 +14,6 @@ public interface LoanService {
 
     List<LoanResponseDto> getLoansByCustomer(Long customerId);
 
+    LoanResponseDto updateLoan(Long loanId, LoanRequestDto requestDto);
+
 }

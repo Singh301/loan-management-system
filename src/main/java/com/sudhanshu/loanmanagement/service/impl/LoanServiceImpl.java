@@ -5,6 +5,7 @@ import com.sudhanshu.loanmanagement.dto.LoanResponseDto;
 import com.sudhanshu.loanmanagement.entity.Customer;
 import com.sudhanshu.loanmanagement.entity.Loan;
 import com.sudhanshu.loanmanagement.entity.LoanStatus;
+import com.sudhanshu.loanmanagement.exception.LoanAlreadyProcessedException;
 import com.sudhanshu.loanmanagement.exception.ResourceNotFoundException;
 import com.sudhanshu.loanmanagement.repository.CustomerRepository;
 import com.sudhanshu.loanmanagement.repository.LoanRepository;
@@ -104,6 +105,39 @@ public class LoanServiceImpl implements LoanService {
                 .applicationDate(loan.getApplicationDate())
                 .remarks(loan.getRemarks())
                 .build();
+    }
+
+    @Override
+    public LoanResponseDto updateLoan(Long loanId,
+                                      LoanRequestDto requestDto) {
+
+        Loan loan = loanRepository.findById(loanId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Loan not found with id : " + loanId));
+
+        if (loan.getLoanStatus() != LoanStatus.PENDING) {
+            throw new LoanAlreadyProcessedException(
+                    "Approved or rejected loans cannot be updated.");
+        }
+
+        Customer customer = customerRepository.findById(
+                        requestDto.getCustomerId())
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Customer not found with id : "
+                                        + requestDto.getCustomerId()));
+
+        loan.setCustomer(customer);
+        loan.setLoanType(requestDto.getLoanType());
+        loan.setLoanAmount(requestDto.getLoanAmount());
+        loan.setInterestRate(requestDto.getInterestRate());
+        loan.setTenureMonths(requestDto.getTenureMonths());
+        loan.setRemarks(requestDto.getRemarks());
+
+        Loan updatedLoan = loanRepository.save(loan);
+
+        return mapToResponseDto(updatedLoan);
     }
 
 }

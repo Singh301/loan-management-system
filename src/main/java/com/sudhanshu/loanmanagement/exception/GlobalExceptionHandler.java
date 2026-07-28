@@ -92,4 +92,18 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
+
+    @ExceptionHandler(LoanAlreadyProcessedException.class)
+    public ResponseEntity<ApiResponse> handleLoanAlreadyProcessedException(
+            LoanAlreadyProcessedException ex) {
+
+        ApiResponse response = ApiResponse.builder()
+                .success(false)
+                .message(ex.getMessage())
+                .data(null)
+                .build();
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
 }
