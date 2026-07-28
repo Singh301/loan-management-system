@@ -33,4 +33,47 @@ public class LoanController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+    @GetMapping
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
+    public ResponseEntity<ApiResponse> getAllLoans() {
+
+        ApiResponse response = ApiResponse.builder()
+                .success(true)
+                .message("Loans fetched successfully.")
+                .data(loanService.getAllLoans())
+                .build();
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{loanId}")
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
+    public ResponseEntity<ApiResponse> getLoanById(
+            @PathVariable Long loanId) {
+
+        ApiResponse response = ApiResponse.builder()
+                .success(true)
+                .message("Loan fetched successfully.")
+                .data(loanService.getLoanById(loanId))
+                .build();
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/customer/{customerId}")
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
+    public ResponseEntity<ApiResponse> getLoansByCustomer(
+            @PathVariable Long customerId) {
+
+        ApiResponse response = ApiResponse.builder()
+                .success(true)
+                .message("Customer loans fetched successfully.")
+                .data(loanService.getLoansByCustomer(customerId))
+                .build();
+
+        return ResponseEntity.ok(response);
+    }
+
+
 }

@@ -12,6 +12,8 @@ import com.sudhanshu.loanmanagement.service.LoanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class LoanServiceImpl implements LoanService {
@@ -51,6 +53,56 @@ public class LoanServiceImpl implements LoanService {
                 .loanStatus(savedLoan.getLoanStatus())
                 .applicationDate(savedLoan.getApplicationDate())
                 .remarks(savedLoan.getRemarks())
+                .build();
+    }
+
+    @Override
+    public List<LoanResponseDto> getAllLoans() {
+
+        return loanRepository.findAll()
+                .stream()
+                .map(this::mapToResponseDto)
+                .toList();
+    }
+
+    @Override
+    public LoanResponseDto getLoanById(Long loanId) {
+
+        Loan loan = loanRepository.findById(loanId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Loan not found with id : " + loanId));
+
+        return mapToResponseDto(loan);
+    }
+
+    @Override
+    public List<LoanResponseDto> getLoansByCustomer(Long customerId) {
+
+        customerRepository.findById(customerId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Customer not found with id : " + customerId));
+
+        return loanRepository.findByCustomerCustomerId(customerId)
+                .stream()
+                .map(this::mapToResponseDto)
+                .toList();
+    }
+
+    private LoanResponseDto mapToResponseDto(Loan loan) {
+
+        return LoanResponseDto.builder()
+                .loanId(loan.getLoanId())
+                .customerId(loan.getCustomer().getCustomerId())
+                .loanType(loan.getLoanType())
+                .loanAmount(loan.getLoanAmount())
+                .interestRate(loan.getInterestRate())
+                .tenureMonths(loan.getTenureMonths())
+                .emi(loan.getEmi())
+                .loanStatus(loan.getLoanStatus())
+                .applicationDate(loan.getApplicationDate())
+                .remarks(loan.getRemarks())
                 .build();
     }
 
