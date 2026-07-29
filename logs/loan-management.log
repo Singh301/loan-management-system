@@ -193,3 +193,543 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2026-07-28T15:39:25Z. Curren
 2026-07-29 04:04:10 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-07-29 04:04:10 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2026-07-29 04:04:10 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-29 04:11:15 INFO  [main] c.s.l.LoanManagementSystemApplication - Starting LoanManagementSystemApplication using Java 21.0.10 with PID 23440 (D:\loan-management-system\loan-management-system\target\classes started by LENOVO in D:\loan-management-system\loan-management-system)
+2026-07-29 04:11:15 DEBUG [main] c.s.l.LoanManagementSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2026-07-29 04:11:15 INFO  [main] c.s.l.LoanManagementSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-29 04:11:16 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-29 04:11:16 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 70 ms. Found 3 JPA repository interfaces.
+2026-07-29 04:11:17 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-29 04:11:17 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-29 04:11:17 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2026-07-29 04:11:17 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-29 04:11:17 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2082 ms
+2026-07-29 04:11:18 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-29 04:11:18 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-07-29 04:11:18 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-29 04:11:18 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-29 04:11:18 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-29 04:11:18 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d59933
+2026-07-29 04:11:18 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-29 04:11:19 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-29 04:11:20 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-29 04:11:20 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 04:11:20 DEBUG [main] c.s.l.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-29 04:11:20 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-29 04:11:20 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-29 04:11:21 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-29 04:11:22 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-29 04:11:22 INFO  [main] c.s.l.LoanManagementSystemApplication - Started LoanManagementSystemApplication in 7.288 seconds (process running for 7.833)
+2026-07-29 04:12:01 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-29 04:12:01 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-29 04:12:01 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 04:12:01 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-29 04:12:01 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-29 04:25:21 INFO  [main] c.s.l.LoanManagementSystemApplicationTests - Starting LoanManagementSystemApplicationTests using Java 21.0.10 with PID 2860 (started by LENOVO in D:\loan-management-system\loan-management-system)
+2026-07-29 04:25:21 DEBUG [main] c.s.l.LoanManagementSystemApplicationTests - Running with Spring Boot v3.5.4, Spring v6.2.9
+2026-07-29 04:25:21 INFO  [main] c.s.l.LoanManagementSystemApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2026-07-29 04:25:22 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-29 04:25:22 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 79 ms. Found 3 JPA repository interfaces.
+2026-07-29 04:25:23 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-29 04:25:23 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-07-29 04:25:23 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-29 04:25:23 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-29 04:25:23 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-29 04:25:24 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@28dd8786
+2026-07-29 04:25:24 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-29 04:25:24 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-29 04:25:25 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-29 04:25:25 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 04:25:26 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-29 04:25:26 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-29 04:25:27 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-29 04:25:29 INFO  [main] c.s.l.LoanManagementSystemApplicationTests - Started LoanManagementSystemApplicationTests in 7.831 seconds (process running for 10.839)
+2026-07-29 04:25:29 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 04:25:29 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-29 04:25:29 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-29 22:47:13 INFO  [main] c.s.l.controller.AuthControllerTest - Starting AuthControllerTest using Java 21.0.10 with PID 3960 (started by LENOVO in D:\loan-management-system\loan-management-system)
+2026-07-29 22:47:13 DEBUG [main] c.s.l.controller.AuthControllerTest - Running with Spring Boot v3.5.4, Spring v6.2.9
+2026-07-29 22:47:13 INFO  [main] c.s.l.controller.AuthControllerTest - No active profile set, falling back to 1 default profile: "default"
+2026-07-29 22:47:16 WARN  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Found 2 UserDetailsService beans, with names [inMemoryUserDetailsManager, com.sudhanshu.loanmanagement.security.CustomUserDetailsService#0]. Global Authentication Manager will not use a UserDetailsService for username/password login. Consider publishing a single UserDetailsService bean.
+2026-07-29 22:47:16 WARN  [main] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: d44dfcb9-3280-4c3d-9e43-e6ec577bf238
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-07-29 22:47:16 INFO  [main] o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-07-29 22:47:16 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-07-29 22:47:16 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2026-07-29 22:47:16 INFO  [main] c.s.l.controller.AuthControllerTest - Started AuthControllerTest in 3.747 seconds (process running for 5.789)
+2026-07-29 23:00:24 INFO  [main] c.s.l.i.AuthIntegrationTest - Starting AuthIntegrationTest using Java 21.0.10 with PID 4368 (started by LENOVO in D:\loan-management-system\loan-management-system)
+2026-07-29 23:00:24 DEBUG [main] c.s.l.i.AuthIntegrationTest - Running with Spring Boot v3.5.4, Spring v6.2.9
+2026-07-29 23:00:24 INFO  [main] c.s.l.i.AuthIntegrationTest - No active profile set, falling back to 1 default profile: "default"
+2026-07-29 23:00:25 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-29 23:00:25 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 153 ms. Found 3 JPA repository interfaces.
+2026-07-29 23:00:26 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-29 23:00:26 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-07-29 23:00:26 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-29 23:00:27 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-29 23:00:27 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-29 23:00:28 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5018b56b
+2026-07-29 23:00:28 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-29 23:00:28 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-29 23:00:29 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-29 23:00:30 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:00:30 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-29 23:00:30 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-29 23:00:31 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-29 23:00:33 DEBUG [main] c.s.l.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-29 23:00:33 INFO  [main] o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-07-29 23:00:33 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-07-29 23:00:33 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+2026-07-29 23:00:33 INFO  [main] c.s.l.i.AuthIntegrationTest - Started AuthIntegrationTest in 9.088 seconds (process running for 10.986)
+2026-07-29 23:00:34 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:00:34 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-29 23:00:34 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-29 23:04:41 INFO  [main] c.s.l.i.AuthIntegrationTest - Starting AuthIntegrationTest using Java 21.0.10 with PID 11372 (started by LENOVO in D:\loan-management-system\loan-management-system)
+2026-07-29 23:04:41 DEBUG [main] c.s.l.i.AuthIntegrationTest - Running with Spring Boot v3.5.4, Spring v6.2.9
+2026-07-29 23:04:41 INFO  [main] c.s.l.i.AuthIntegrationTest - No active profile set, falling back to 1 default profile: "default"
+2026-07-29 23:04:42 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-29 23:04:42 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 111 ms. Found 3 JPA repository interfaces.
+2026-07-29 23:04:43 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-29 23:04:43 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-07-29 23:04:43 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-29 23:04:44 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-29 23:04:44 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-29 23:04:44 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@360a3106
+2026-07-29 23:04:44 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-29 23:04:44 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-29 23:04:46 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-29 23:04:46 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:04:46 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-29 23:04:46 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-29 23:04:47 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-29 23:04:48 DEBUG [main] c.s.l.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-29 23:04:48 INFO  [main] o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-07-29 23:04:48 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-07-29 23:04:48 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2026-07-29 23:04:48 INFO  [main] c.s.l.i.AuthIntegrationTest - Started AuthIntegrationTest in 7.934 seconds (process running for 9.84)
+2026-07-29 23:04:50 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:04:50 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-29 23:04:50 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-29 23:15:49 INFO  [main] c.s.l.i.AuthIntegrationTest - Starting AuthIntegrationTest using Java 21.0.10 with PID 1732 (started by LENOVO in D:\loan-management-system\loan-management-system)
+2026-07-29 23:15:49 DEBUG [main] c.s.l.i.AuthIntegrationTest - Running with Spring Boot v3.5.4, Spring v6.2.9
+2026-07-29 23:15:49 INFO  [main] c.s.l.i.AuthIntegrationTest - No active profile set, falling back to 1 default profile: "default"
+2026-07-29 23:15:51 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-29 23:15:51 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 110 ms. Found 3 JPA repository interfaces.
+2026-07-29 23:15:52 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-29 23:15:52 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-07-29 23:15:52 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-29 23:15:52 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-29 23:15:52 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-29 23:15:53 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5e360c3b
+2026-07-29 23:15:53 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-29 23:15:53 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-29 23:15:54 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-29 23:15:54 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:15:55 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-29 23:15:55 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-29 23:15:56 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-29 23:15:57 DEBUG [main] c.s.l.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-29 23:15:57 INFO  [main] o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-07-29 23:15:57 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-07-29 23:15:57 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+2026-07-29 23:15:57 INFO  [main] c.s.l.i.AuthIntegrationTest - Started AuthIntegrationTest in 7.842 seconds (process running for 9.625)
+2026-07-29 23:15:58 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:15:58 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-29 23:15:58 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-29 23:30:01 INFO  [main] c.s.l.i.LoanIntegrationTest - Starting LoanIntegrationTest using Java 21.0.10 with PID 14516 (started by LENOVO in D:\loan-management-system\loan-management-system)
+2026-07-29 23:30:01 DEBUG [main] c.s.l.i.LoanIntegrationTest - Running with Spring Boot v3.5.4, Spring v6.2.9
+2026-07-29 23:30:01 INFO  [main] c.s.l.i.LoanIntegrationTest - No active profile set, falling back to 1 default profile: "default"
+2026-07-29 23:30:03 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-29 23:30:03 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 90 ms. Found 3 JPA repository interfaces.
+2026-07-29 23:30:04 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-29 23:30:04 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-07-29 23:30:04 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-29 23:30:04 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-29 23:30:04 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-29 23:30:05 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@543ac221
+2026-07-29 23:30:05 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-29 23:30:05 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-29 23:30:06 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-29 23:30:06 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:30:07 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-29 23:30:07 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-29 23:30:08 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-29 23:30:09 DEBUG [main] c.s.l.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-29 23:30:09 INFO  [main] o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-07-29 23:30:09 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-07-29 23:30:09 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+2026-07-29 23:30:09 INFO  [main] c.s.l.i.LoanIntegrationTest - Started LoanIntegrationTest in 7.882 seconds (process running for 9.679)
+2026-07-29 23:30:10 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan status update requested. loanId=4, newStatus=APPROVED
+2026-07-29 23:30:10 DEBUG [main] c.s.l.service.impl.LoanServiceImpl - EMI calculated successfully. loanId=4, emi=12601.12
+2026-07-29 23:30:10 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan status updated successfully. loanId=4, status=APPROVED, emi=12601.12
+2026-07-29 23:30:10 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loan details. loanId=1
+2026-07-29 23:30:10 DEBUG [main] c.s.l.service.impl.LoanServiceImpl - Loan found. loanId=1, status=APPROVED
+2026-07-29 23:30:11 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans for customerId=999
+2026-07-29 23:30:11 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans with pagination. page=0, size=5, sortBy=loanAmount, direction=desc
+2026-07-29 23:30:11 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Pagination completed. totalElements=5, totalPages=1, currentPage=0
+2026-07-29 23:30:11 WARN  [main] o.s.d.w.c.SpringDataJacksonConfiguration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-07-29 23:30:11 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan update requested. loanId=1, customerId=6
+2026-07-29 23:30:11 WARN  [main] c.s.l.service.impl.LoanServiceImpl - Loan update rejected. loanId=1 is already APPROVED
+2026-07-29 23:30:11 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans by type. loanType=CAR, page=0, size=5
+2026-07-29 23:30:11 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan type filter completed. loanType=CAR, totalRecords=4
+2026-07-29 23:30:11 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans by status. status=APPROVED, page=0, size=5
+2026-07-29 23:30:11 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Status filter completed. status=APPROVED, totalRecords=3
+2026-07-29 23:30:12 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan update requested. loanId=999, customerId=6
+2026-07-29 23:30:12 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan application requested. customerId=6, loanType=CAR, amount=500000
+2026-07-29 23:30:12 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan created successfully. loanId=6, customerId=6
+2026-07-29 23:30:12 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans for customerId=6
+2026-07-29 23:30:12 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetched 6 loan(s) for customerId=6
+2026-07-29 23:30:12 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loan details. loanId=999
+2026-07-29 23:30:12 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans with pagination. page=0, size=3, sortBy=loanId, direction=asc
+2026-07-29 23:30:12 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Pagination completed. totalElements=6, totalPages=2, currentPage=0
+2026-07-29 23:30:12 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan status update requested. loanId=1, newStatus=APPROVED
+2026-07-29 23:30:12 WARN  [main] c.s.l.service.impl.LoanServiceImpl - Loan status update rejected. loanId=1 already APPROVED
+2026-07-29 23:30:12 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan update requested. loanId=2, customerId=6
+2026-07-29 23:30:12 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan updated successfully. loanId=2, loanType=CAR, amount=650000
+2026-07-29 23:30:13 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching all loans.
+2026-07-29 23:30:13 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Total loans fetched: 6
+2026-07-29 23:30:13 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:30:13 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-29 23:30:13 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-29 23:34:40 INFO  [main] c.s.l.i.LoanIntegrationTest - Starting LoanIntegrationTest using Java 21.0.10 with PID 3856 (started by LENOVO in D:\loan-management-system\loan-management-system)
+2026-07-29 23:34:40 DEBUG [main] c.s.l.i.LoanIntegrationTest - Running with Spring Boot v3.5.4, Spring v6.2.9
+2026-07-29 23:34:40 INFO  [main] c.s.l.i.LoanIntegrationTest - No active profile set, falling back to 1 default profile: "default"
+2026-07-29 23:34:41 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-29 23:34:41 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 130 ms. Found 3 JPA repository interfaces.
+2026-07-29 23:34:42 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-29 23:34:42 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-07-29 23:34:42 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-29 23:34:43 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-29 23:34:43 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-29 23:34:43 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@63a72cc6
+2026-07-29 23:34:43 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-29 23:34:43 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-29 23:34:45 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-29 23:34:45 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:34:45 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-29 23:34:45 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-29 23:34:46 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-29 23:34:48 DEBUG [main] c.s.l.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-29 23:34:48 INFO  [main] o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-07-29 23:34:48 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-07-29 23:34:48 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2026-07-29 23:34:48 INFO  [main] c.s.l.i.LoanIntegrationTest - Started LoanIntegrationTest in 8.046 seconds (process running for 9.832)
+2026-07-29 23:34:49 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan status update requested. loanId=4, newStatus=APPROVED
+2026-07-29 23:34:49 WARN  [main] c.s.l.service.impl.LoanServiceImpl - Loan status update rejected. loanId=4 already APPROVED
+2026-07-29 23:34:49 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loan details. loanId=1
+2026-07-29 23:34:49 DEBUG [main] c.s.l.service.impl.LoanServiceImpl - Loan found. loanId=1, status=APPROVED
+2026-07-29 23:34:49 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans for customerId=999
+2026-07-29 23:34:49 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans with pagination. page=0, size=5, sortBy=loanAmount, direction=desc
+2026-07-29 23:34:49 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Pagination completed. totalElements=6, totalPages=2, currentPage=0
+2026-07-29 23:34:49 WARN  [main] o.s.d.w.c.SpringDataJacksonConfiguration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-07-29 23:34:49 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan update requested. loanId=1, customerId=6
+2026-07-29 23:34:49 WARN  [main] c.s.l.service.impl.LoanServiceImpl - Loan update rejected. loanId=1 is already APPROVED
+2026-07-29 23:34:49 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans by type. loanType=CAR, page=0, size=5
+2026-07-29 23:34:49 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan type filter completed. loanType=CAR, totalRecords=5
+2026-07-29 23:34:50 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans by status. status=APPROVED, page=0, size=5
+2026-07-29 23:34:50 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Status filter completed. status=APPROVED, totalRecords=3
+2026-07-29 23:34:50 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan update requested. loanId=999, customerId=6
+2026-07-29 23:34:50 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan application requested. customerId=6, loanType=CAR, amount=500000
+2026-07-29 23:34:50 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan created successfully. loanId=7, customerId=6
+2026-07-29 23:34:50 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans for customerId=6
+2026-07-29 23:34:50 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetched 7 loan(s) for customerId=6
+2026-07-29 23:34:50 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loan details. loanId=999
+2026-07-29 23:34:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans with pagination. page=0, size=3, sortBy=loanId, direction=asc
+2026-07-29 23:34:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Pagination completed. totalElements=7, totalPages=3, currentPage=0
+2026-07-29 23:34:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan status update requested. loanId=1, newStatus=APPROVED
+2026-07-29 23:34:51 WARN  [main] c.s.l.service.impl.LoanServiceImpl - Loan status update rejected. loanId=1 already APPROVED
+2026-07-29 23:34:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan update requested. loanId=2, customerId=6
+2026-07-29 23:34:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan updated successfully. loanId=2, loanType=CAR, amount=650000
+2026-07-29 23:34:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching all loans.
+2026-07-29 23:34:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Total loans fetched: 7
+2026-07-29 23:34:51 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:34:51 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-29 23:34:51 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-29 23:40:41 INFO  [main] c.s.l.i.LoanIntegrationTest - Starting LoanIntegrationTest using Java 21.0.10 with PID 23260 (started by LENOVO in D:\loan-management-system\loan-management-system)
+2026-07-29 23:40:41 DEBUG [main] c.s.l.i.LoanIntegrationTest - Running with Spring Boot v3.5.4, Spring v6.2.9
+2026-07-29 23:40:41 INFO  [main] c.s.l.i.LoanIntegrationTest - No active profile set, falling back to 1 default profile: "default"
+2026-07-29 23:40:42 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-29 23:40:43 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 102 ms. Found 3 JPA repository interfaces.
+2026-07-29 23:40:43 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-29 23:40:44 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-07-29 23:40:44 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-29 23:40:44 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-29 23:40:44 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-29 23:40:45 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7323c38c
+2026-07-29 23:40:45 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-29 23:40:45 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-29 23:40:46 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-29 23:40:46 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:40:47 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-29 23:40:47 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-29 23:40:48 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-29 23:40:49 DEBUG [main] c.s.l.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-29 23:40:49 INFO  [main] o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-07-29 23:40:49 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-07-29 23:40:49 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2026-07-29 23:40:49 INFO  [main] c.s.l.i.LoanIntegrationTest - Started LoanIntegrationTest in 8.0 seconds (process running for 9.917)
+2026-07-29 23:40:50 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loan details. loanId=1
+2026-07-29 23:40:50 DEBUG [main] c.s.l.service.impl.LoanServiceImpl - Loan found. loanId=1, status=APPROVED
+2026-07-29 23:40:50 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans for customerId=999
+2026-07-29 23:40:50 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans with pagination. page=0, size=5, sortBy=loanAmount, direction=desc
+2026-07-29 23:40:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Pagination completed. totalElements=7, totalPages=2, currentPage=0
+2026-07-29 23:40:51 WARN  [main] o.s.d.w.c.SpringDataJacksonConfiguration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-07-29 23:40:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan update requested. loanId=1, customerId=6
+2026-07-29 23:40:51 WARN  [main] c.s.l.service.impl.LoanServiceImpl - Loan update rejected. loanId=1 is already APPROVED
+2026-07-29 23:40:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans by type. loanType=CAR, page=0, size=5
+2026-07-29 23:40:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan type filter completed. loanType=CAR, totalRecords=6
+2026-07-29 23:40:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans by status. status=APPROVED, page=0, size=5
+2026-07-29 23:40:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Status filter completed. status=APPROVED, totalRecords=3
+2026-07-29 23:40:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan update requested. loanId=999, customerId=6
+2026-07-29 23:40:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan application requested. customerId=6, loanType=CAR, amount=500000
+2026-07-29 23:40:51 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan created successfully. loanId=8, customerId=6
+2026-07-29 23:40:52 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans for customerId=6
+2026-07-29 23:40:52 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetched 8 loan(s) for customerId=6
+2026-07-29 23:40:52 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loan details. loanId=999
+2026-07-29 23:40:52 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans with pagination. page=0, size=3, sortBy=loanId, direction=asc
+2026-07-29 23:40:52 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Pagination completed. totalElements=8, totalPages=3, currentPage=0
+2026-07-29 23:40:52 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan status update requested. loanId=1, newStatus=APPROVED
+2026-07-29 23:40:52 WARN  [main] c.s.l.service.impl.LoanServiceImpl - Loan status update rejected. loanId=1 already APPROVED
+2026-07-29 23:40:52 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan update requested. loanId=2, customerId=6
+2026-07-29 23:40:52 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan updated successfully. loanId=2, loanType=CAR, amount=650000
+2026-07-29 23:40:52 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching all loans.
+2026-07-29 23:40:52 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Total loans fetched: 8
+2026-07-29 23:40:52 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:40:52 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-29 23:40:52 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-29 23:41:23 INFO  [main] c.s.l.LoanManagementSystemApplication - Starting LoanManagementSystemApplication using Java 21.0.10 with PID 20292 (D:\loan-management-system\loan-management-system\target\classes started by LENOVO in D:\loan-management-system\loan-management-system)
+2026-07-29 23:41:23 DEBUG [main] c.s.l.LoanManagementSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2026-07-29 23:41:23 INFO  [main] c.s.l.LoanManagementSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-29 23:41:24 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-29 23:41:24 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 85 ms. Found 3 JPA repository interfaces.
+2026-07-29 23:41:25 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-29 23:41:25 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-29 23:41:25 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2026-07-29 23:41:25 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-29 23:41:25 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2412 ms
+2026-07-29 23:41:26 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-29 23:41:26 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-07-29 23:41:26 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-29 23:41:26 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-29 23:41:26 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-29 23:41:27 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4a0c3aa8
+2026-07-29 23:41:27 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-29 23:41:27 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-29 23:41:28 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-29 23:41:28 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:41:28 DEBUG [main] c.s.l.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-29 23:41:28 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-29 23:41:28 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-29 23:41:30 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-29 23:41:30 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-29 23:41:30 INFO  [main] c.s.l.LoanManagementSystemApplication - Started LoanManagementSystemApplication in 8.392 seconds (process running for 8.964)
+2026-07-29 23:41:44 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-29 23:41:44 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-29 23:41:44 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:41:44 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-29 23:41:44 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-29 23:42:16 INFO  [main] c.s.l.i.AuthIntegrationTest - Starting AuthIntegrationTest using Java 21.0.10 with PID 23440 (started by LENOVO in D:\loan-management-system\loan-management-system)
+2026-07-29 23:42:16 DEBUG [main] c.s.l.i.AuthIntegrationTest - Running with Spring Boot v3.5.4, Spring v6.2.9
+2026-07-29 23:42:16 INFO  [main] c.s.l.i.AuthIntegrationTest - No active profile set, falling back to 1 default profile: "default"
+2026-07-29 23:42:17 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-29 23:42:17 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 79 ms. Found 3 JPA repository interfaces.
+2026-07-29 23:42:18 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-29 23:42:18 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-07-29 23:42:18 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-29 23:42:18 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-29 23:42:18 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-29 23:42:19 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7e27b77a
+2026-07-29 23:42:19 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-29 23:42:19 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-29 23:42:20 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-29 23:42:20 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:42:20 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-29 23:42:21 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-29 23:42:22 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-29 23:42:23 DEBUG [main] c.s.l.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-29 23:42:23 INFO  [main] o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-07-29 23:42:23 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-07-29 23:42:23 INFO  [main] o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2026-07-29 23:42:23 INFO  [main] c.s.l.i.AuthIntegrationTest - Started AuthIntegrationTest in 7.406 seconds (process running for 11.153)
+2026-07-29 23:42:24 INFO  [main] o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.sudhanshu.loanmanagement.integration.LoanIntegrationTest]: LoanIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-29 23:42:24 INFO  [main] o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.sudhanshu.loanmanagement.LoanManagementSystemApplication for test class com.sudhanshu.loanmanagement.integration.LoanIntegrationTest
+2026-07-29 23:42:24 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loan details. loanId=1
+2026-07-29 23:42:24 DEBUG [main] c.s.l.service.impl.LoanServiceImpl - Loan found. loanId=1, status=APPROVED
+2026-07-29 23:42:24 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans for customerId=999
+2026-07-29 23:42:24 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans with pagination. page=0, size=5, sortBy=loanAmount, direction=desc
+2026-07-29 23:42:24 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Pagination completed. totalElements=8, totalPages=2, currentPage=0
+2026-07-29 23:42:24 WARN  [main] o.s.d.w.c.SpringDataJacksonConfiguration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-07-29 23:42:24 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan update requested. loanId=1, customerId=6
+2026-07-29 23:42:24 WARN  [main] c.s.l.service.impl.LoanServiceImpl - Loan update rejected. loanId=1 is already APPROVED
+2026-07-29 23:42:24 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans by type. loanType=CAR, page=0, size=5
+2026-07-29 23:42:24 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan type filter completed. loanType=CAR, totalRecords=7
+2026-07-29 23:42:25 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans by status. status=APPROVED, page=0, size=5
+2026-07-29 23:42:25 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Status filter completed. status=APPROVED, totalRecords=3
+2026-07-29 23:42:25 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan update requested. loanId=999, customerId=6
+2026-07-29 23:42:25 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan application requested. customerId=6, loanType=CAR, amount=500000
+2026-07-29 23:42:25 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan created successfully. loanId=9, customerId=6
+2026-07-29 23:42:25 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans for customerId=6
+2026-07-29 23:42:25 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetched 9 loan(s) for customerId=6
+2026-07-29 23:42:25 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loan details. loanId=999
+2026-07-29 23:42:26 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching loans with pagination. page=0, size=3, sortBy=loanId, direction=asc
+2026-07-29 23:42:26 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Pagination completed. totalElements=9, totalPages=3, currentPage=0
+2026-07-29 23:42:26 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan status update requested. loanId=1, newStatus=APPROVED
+2026-07-29 23:42:26 WARN  [main] c.s.l.service.impl.LoanServiceImpl - Loan status update rejected. loanId=1 already APPROVED
+2026-07-29 23:42:26 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan update requested. loanId=2, customerId=6
+2026-07-29 23:42:26 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Loan updated successfully. loanId=2, loanType=CAR, amount=650000
+2026-07-29 23:42:26 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Fetching all loans.
+2026-07-29 23:42:26 INFO  [main] c.s.l.service.impl.LoanServiceImpl - Total loans fetched: 9
+2026-07-29 23:42:26 INFO  [main] o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.sudhanshu.loanmanagement.LoanManagementSystemApplicationTests]: LoanManagementSystemApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-29 23:42:26 INFO  [main] o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.sudhanshu.loanmanagement.LoanManagementSystemApplication for test class com.sudhanshu.loanmanagement.LoanManagementSystemApplicationTests
+2026-07-29 23:42:26 INFO  [main] c.s.l.LoanManagementSystemApplicationTests - Starting LoanManagementSystemApplicationTests using Java 21.0.10 with PID 23440 (started by LENOVO in D:\loan-management-system\loan-management-system)
+2026-07-29 23:42:26 DEBUG [main] c.s.l.LoanManagementSystemApplicationTests - Running with Spring Boot v3.5.4, Spring v6.2.9
+2026-07-29 23:42:26 INFO  [main] c.s.l.LoanManagementSystemApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2026-07-29 23:42:26 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-29 23:42:26 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 3 JPA repository interfaces.
+2026-07-29 23:42:26 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-29 23:42:26 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-29 23:42:26 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-29 23:42:26 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2026-07-29 23:42:26 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@159c804c
+2026-07-29 23:42:26 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2026-07-29 23:42:26 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-29 23:42:26 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-29 23:42:27 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:42:27 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-29 23:42:27 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-29 23:42:27 INFO  [main] c.s.l.LoanManagementSystemApplicationTests - Started LoanManagementSystemApplicationTests in 1.176 seconds (process running for 15.478)
+2026-07-29 23:42:27 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:42:27 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-29 23:42:27 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-29 23:42:27 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:42:27 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2026-07-29 23:42:27 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2026-07-29 23:42:44 INFO  [main] c.s.l.LoanManagementSystemApplication - Starting LoanManagementSystemApplication using Java 21.0.10 with PID 4640 (D:\loan-management-system\loan-management-system\target\classes started by LENOVO in D:\loan-management-system\loan-management-system)
+2026-07-29 23:42:44 DEBUG [main] c.s.l.LoanManagementSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2026-07-29 23:42:44 INFO  [main] c.s.l.LoanManagementSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-29 23:42:46 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-29 23:42:46 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 87 ms. Found 3 JPA repository interfaces.
+2026-07-29 23:42:47 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-29 23:42:47 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-29 23:42:47 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2026-07-29 23:42:47 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-29 23:42:47 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2433 ms
+2026-07-29 23:42:47 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-29 23:42:47 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-07-29 23:42:47 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-07-29 23:42:48 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-29 23:42:48 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-29 23:42:48 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@26a33cf
+2026-07-29 23:42:48 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-29 23:42:48 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-29 23:42:49 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-29 23:42:49 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:42:50 DEBUG [main] c.s.l.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-29 23:42:50 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-29 23:42:50 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-29 23:42:51 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-29 23:42:52 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-29 23:42:52 INFO  [main] c.s.l.LoanManagementSystemApplication - Started LoanManagementSystemApplication in 8.388 seconds (process running for 8.951)
+2026-07-29 23:42:58 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-29 23:42:58 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-29 23:42:58 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-29 23:42:58 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-29 23:42:58 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
