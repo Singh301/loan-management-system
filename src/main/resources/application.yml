@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: dev
+
+server:
+  port: 8080
+
+logging:
+  file:
+    name: logs/application.log
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

@@ -1,0 +1,7 @@
+target/*.original
+.idea
+.git
+.gitignore
+logs
+*.iml
+README.md
