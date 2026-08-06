@@ -6,6 +6,7 @@ import com.sudhanshu.loanmanagement.entity.Customer;
 import com.sudhanshu.loanmanagement.exception.CustomerAlreadyExistsException;
 import com.sudhanshu.loanmanagement.exception.ResourceNotFoundException;
 import com.sudhanshu.loanmanagement.repository.CustomerRepository;
+import com.sudhanshu.loanmanagement.service.AuditService;
 import com.sudhanshu.loanmanagement.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +20,7 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
+    private final AuditService auditService;
 
     @Override
     public void addCustomer(CustomerRequestDto dto) {
@@ -55,6 +57,13 @@ public class CustomerServiceImpl implements CustomerService {
                 .build();
 
         customerRepository.save(customer);
+
+        auditService.saveAudit(
+                "SYSTEM",
+                "CUSTOMER",
+                "CREATE",
+                "Customer created with email : " + customer.getEmail()
+        );
 
         log.info("Customer created successfully with email: {}", dto.getEmail());
     }
@@ -122,6 +131,13 @@ public class CustomerServiceImpl implements CustomerService {
 
         Customer updatedCustomer = customerRepository.save(customer);
 
+        auditService.saveAudit(
+                "SYSTEM",
+                "CUSTOMER",
+                "UPDATE",
+                "Customer updated : " + updatedCustomer.getCustomerId()
+        );
+
         log.info("Customer updated successfully.");
 
         return mapToResponse(updatedCustomer);
@@ -139,6 +155,13 @@ public class CustomerServiceImpl implements CustomerService {
                                 "Customer not found with id : " + customerId));
 
         customerRepository.delete(customer);
+
+        auditService.saveAudit(
+                "SYSTEM",
+                "CUSTOMER",
+                "DELETE",
+                "Customer deleted : " + customer.getCustomerId()
+        );
 
         log.info("Customer deleted successfully.");
 

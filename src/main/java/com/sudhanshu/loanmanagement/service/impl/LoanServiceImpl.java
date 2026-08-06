@@ -7,10 +7,12 @@ import com.sudhanshu.loanmanagement.entity.Customer;
 import com.sudhanshu.loanmanagement.entity.Loan;
 import com.sudhanshu.loanmanagement.entity.LoanStatus;
 import com.sudhanshu.loanmanagement.entity.LoanType;
+import com.sudhanshu.loanmanagement.exception.AccessDeniedException;
 import com.sudhanshu.loanmanagement.exception.LoanAlreadyProcessedException;
 import com.sudhanshu.loanmanagement.exception.ResourceNotFoundException;
 import com.sudhanshu.loanmanagement.repository.CustomerRepository;
 import com.sudhanshu.loanmanagement.repository.LoanRepository;
+import com.sudhanshu.loanmanagement.service.AuditService;
 import com.sudhanshu.loanmanagement.service.LoanService;
 import com.sudhanshu.loanmanagement.util.EmiCalculator;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +23,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import com.sudhanshu.loanmanagement.specification.LoanSpecification;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -34,6 +41,8 @@ public class LoanServiceImpl implements LoanService {
     private final LoanRepository loanRepository;
 
     private final CustomerRepository customerRepository;
+
+    private final AuditService auditService;
 
     private final EmiCalculator emiCalculator;
 
@@ -65,6 +74,14 @@ public class LoanServiceImpl implements LoanService {
                 .build();
 
         Loan savedLoan = loanRepository.save(loan);
+
+        auditService.saveAudit(
+                "SYSTEM",
+                "LOAN",
+                "CREATE",
+                "Loan created. Loan ID: " + savedLoan.getLoanId()
+                        + ", Customer ID: " + savedLoan.getCustomer().getCustomerId()
+        );
 
         logger.info(
                 "Loan created successfully. loanId={}, customerId={}",
@@ -146,6 +163,45 @@ public class LoanServiceImpl implements LoanService {
     }
 
     @Override
+    public List<LoanResponseDto> getMyLoans(String username) {
+
+        Customer customer = customerRepository
+                .findByUserUsername(username)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Customer not found for logged in user."
+                        ));
+
+        return loanRepository
+                .findByCustomerCustomerId(customer.getCustomerId())
+                .stream()
+                .map(this::mapToResponseDto)
+                .toList();
+    }
+
+    @Override
+    public LoanResponseDto getMyLoan(
+            Long loanId,
+            String username) {
+
+        Loan loan = loanRepository.findById(loanId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Loan not found with id : " + loanId));
+
+        if (!loan.getCustomer()
+                .getUser()
+                .getUsername()
+                .equals(username)) {
+
+            throw new AccessDeniedException(
+                    "You are not allowed to access this loan.");
+        }
+
+        return mapToResponseDto(loan);
+    }
+
+    @Override
     public LoanResponseDto updateLoan(
             Long loanId,
             LoanRequestDto requestDto) {
@@ -188,6 +244,14 @@ public class LoanServiceImpl implements LoanService {
         loan.setRemarks(requestDto.getRemarks());
 
         Loan updatedLoan = loanRepository.save(loan);
+
+        auditService.saveAudit(
+                "SYSTEM",
+                "LOAN",
+                "UPDATE",
+                "Loan updated. Loan ID: " + updatedLoan.getLoanId()
+        );
+
 
         logger.info(
                 "Loan updated successfully. loanId={}, loanType={}, amount={}",
@@ -264,6 +328,17 @@ public class LoanServiceImpl implements LoanService {
         }
 
         Loan updatedLoan = loanRepository.save(loan);
+
+        auditService.saveAudit(
+                "SYSTEM",
+                "LOAN",
+                updatedLoan.getLoanStatus().name(),
+                "Loan status changed to "
+                        + updatedLoan.getLoanStatus()
+                        + ". Loan ID: "
+                        + updatedLoan.getLoanId()
+        );
+
 
         logger.info(
                 "Loan status updated successfully. loanId={}, status={}, emi={}",
@@ -379,5 +454,36 @@ public class LoanServiceImpl implements LoanService {
         );
 
         return result;
+    }
+
+    @Override
+    public Page<LoanResponseDto> searchLoans(
+            String customerName,
+            String email,
+            LoanType loanType,
+            LoanStatus loanStatus,
+            BigDecimal minAmount,
+            BigDecimal maxAmount,
+            int page,
+            int size,
+            String sortBy,
+            String direction) {
+
+        Sort sort = direction.equalsIgnoreCase("desc")
+                ? Sort.by(sortBy).descending()
+                : Sort.by(sortBy).ascending();
+
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        return loanRepository.findAll(
+                        LoanSpecification.search(
+                                customerName,
+                                email,
+                                loanType,
+                                loanStatus,
+                                minAmount,
+                                maxAmount),
+                        pageable)
+                .map(this::mapToResponseDto);
     }
 }

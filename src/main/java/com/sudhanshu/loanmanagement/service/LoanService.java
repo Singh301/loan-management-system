@@ -8,6 +8,7 @@ import com.sudhanshu.loanmanagement.entity.LoanType;
 import org.springframework.data.domain.Page;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface LoanService {
@@ -20,6 +21,10 @@ public interface LoanService {
 
     List<LoanResponseDto> getLoansByCustomer(Long customerId);
 
+    List<LoanResponseDto> getMyLoans(String username);
+
+    LoanResponseDto getMyLoan(Long loanId, String username);
+
     LoanResponseDto updateLoan(Long loanId, LoanRequestDto requestDto);
 
     LoanResponseDto updateLoanStatus(Long loanId, LoanStatusUpdateDto requestDto);
@@ -29,4 +34,18 @@ public interface LoanService {
     Page<LoanResponseDto> getLoansByStatus(LoanStatus loanStatus, int page, int size);
 
     Page<LoanResponseDto> getLoansByType(LoanType loanType, int page, int size);
+
+    Page<LoanResponseDto> searchLoans(
+            String customerName,
+            String email,
+            LoanType loanType,
+            LoanStatus loanStatus,
+            BigDecimal minAmount,
+            BigDecimal maxAmount,
+            int page,
+            int size,
+            String sortBy,
+            String direction
+    );
+
 }
