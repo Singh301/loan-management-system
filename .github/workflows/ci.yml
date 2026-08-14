@@ -2,13 +2,13 @@ name: CI
 
 on:
   push:
-    branches: [ master, main, develop ]
+    branches: [ master, main, develop, production-grade-enhancements ]
   pull_request:
     branches: [ master, main, develop ]
 
 jobs:
   build:
-    name: Build & Compile
+    name: Build, Test & Package
     runs-on: ubuntu-latest
 
     steps:
@@ -23,14 +23,26 @@ jobs:
           cache: maven
 
       - name: Compile
-        run: ./mvnw -B -DskipTests compile
+        run: ./mvnw -B compile
 
-      - name: Package
-        run: ./mvnw -B -DskipTests package
+      - name: Unit tests and verification
+        run: ./mvnw -B verify
 
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-jar
           path: target/loan-management-system-*.jar
-          retention-days: 7
+          retention-days: 14
+
+      - name: Create source ZIP
+        run: |
+          zip -r loan-management-system-production-grade.zip . \
+            -x '.git/*' 'target/*' 'logs/*' 'uploads/*'
+
+      - name: Upload source ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-grade-source
+          path: loan-management-system-production-grade.zip
+          retention-days: 14
