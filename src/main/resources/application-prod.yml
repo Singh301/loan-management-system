@@ -5,37 +5,33 @@ spring:
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
-      maximum-pool-size: ${DB_POOL_SIZE:10}
-      minimum-idle: 2
+      maximum-pool-size: ${DB_POOL_SIZE:20}
+      minimum-idle: ${DB_MIN_IDLE:5}
       connection-timeout: 30000
+      validation-timeout: 5000
       idle-timeout: 600000
       max-lifetime: 1800000
-
   jpa:
     hibernate:
       ddl-auto: validate
     show-sql: false
     open-in-view: false
-
   flyway:
     enabled: true
-    baseline-on-migrate: true
+    baseline-on-migrate: false
     locations: classpath:db/migration
-
   data:
     redis:
-      host: ${REDIS_HOST:}
+      host: ${REDIS_HOST}
       port: ${REDIS_PORT:6379}
       password: ${REDIS_PASSWORD:}
-      timeout: 2000ms
-
-  # Note: to enable Redis in prod, also set env
-  # SPRING_AUTOCONFIGURE_EXCLUDE= (empty) or remove redis excludes from main yml when using Redis.
+      timeout: 2s
+      connect-timeout: 2s
 
 jwt:
   secret: ${JWT_SECRET}
-  expiration: ${JWT_EXPIRATION}
-  refresh-expiration: ${JWT_REFRESH_EXPIRATION}
+  expiration: ${JWT_EXPIRATION:900000}
+  refresh-expiration: ${JWT_REFRESH_EXPIRATION:604800000}
 
 file:
   storage: ${FILE_STORAGE:s3}
@@ -43,6 +39,13 @@ file:
   s3:
     bucket: ${S3_BUCKET}
     region: ${S3_REGION:ap-south-1}
+
+# API documentation is a developer feature, not a public production endpoint.
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
 
 management:
   endpoints:
@@ -52,9 +55,15 @@ management:
   endpoint:
     health:
       show-details: never
-  metrics:
-    tags:
-      application: loan-management-system
+      probes:
+        enabled: true
+  health:
+    redis:
+      enabled: true
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
 
 logging:
   level:
