@@ -13,9 +13,9 @@ import com.sudhanshu.loanmanagement.loan.mapper.LoanMapper;
 import com.sudhanshu.loanmanagement.loan.repository.EmiScheduleRepository;
 import com.sudhanshu.loanmanagement.loan.repository.LoanRepository;
 import com.sudhanshu.loanmanagement.loan.service.LoanDisbursementService;
+import com.sudhanshu.loanmanagement.outbox.OutboxService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import com.sudhanshu.loanmanagement.outbox.OutboxService;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,40 +40,31 @@ public class LoanDisbursementServiceImpl implements LoanDisbursementService {
 
     @Override
     @Transactional
-    public LoanResponseDto disburseLoan(Long loanId,
-                                        DisburseLoanRequestDto request,
-                                        String idempotencyKey) {
+    public LoanResponseDto disburseLoan(Long loanId, DisburseLoanRequestDto request, String idempotencyKey) {
+        log.info("Disbursement requested. loanId={}", loanId);
 
-        log.info("Disbursement requested. loanId={}, idempotencyKey={}", loanId, idempotencyKey);
-
-        Loan loan = loanRepository.findById(loanId)
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        "Loan not found with id : " + loanId));
+        // SELECT ... FOR UPDATE equivalent: only one transaction can change this loan at a time.
+        Loan loan = loanRepository.findByIdForUpdate(loanId)
+                .orElseThrow(() -> new ResourceNotFoundException("Loan not found with id : " + loanId));
 
         if (Boolean.TRUE.equals(loan.getDeleted())) {
             throw new ResourceNotFoundException("Loan not found with id : " + loanId);
         }
 
-        // Idempotency: same key + already disbursed → return current state
-        if (idempotencyKey != null && !idempotencyKey.isBlank()) {
-            if (idempotencyKey.equals(loan.getDisbursementIdempotencyKey())
-                    && (loan.getLoanStatus() == LoanStatus.DISBURSED
-                    || loan.getLoanStatus() == LoanStatus.ACTIVE)) {
-                log.info("Idempotent disbursement hit. Returning existing state. loanId={}", loanId);
-                return loanMapper.toResponseDto(loan);
-            }
+        if (idempotencyKey != null && !idempotencyKey.isBlank()
+                && idempotencyKey.equals(loan.getDisbursementIdempotencyKey())
+                && (loan.getLoanStatus() == LoanStatus.DISBURSED || loan.getLoanStatus() == LoanStatus.ACTIVE)) {
+            log.info("Idempotent disbursement retry. loanId={}", loanId);
+            return loanMapper.toResponseDto(loan);
         }
 
         loanStateMachine.validateTransition(loan.getLoanStatus(), LoanStatus.DISBURSED);
-
         if (loan.getEmi() == null || loan.getEmi().compareTo(BigDecimal.ZERO) <= 0) {
-            throw new IllegalStateException(
-                    "EMI must be calculated before disbursement. Approve the loan first.");
+            throw new IllegalStateException("EMI must be calculated before disbursement. Approve the loan first.");
         }
 
         LocalDate disbursementDate = request.getDisbursementDate() != null
-                ? request.getDisbursementDate()
-                : LocalDate.now();
+                ? request.getDisbursementDate() : LocalDate.now();
 
         loan.setDisbursementDate(disbursementDate);
         loan.setNextDueDate(disbursementDate.plusMonths(1));
@@ -85,33 +76,26 @@ public class LoanDisbursementServiceImpl implements LoanDisbursementService {
         if (idempotencyKey != null && !idempotencyKey.isBlank()) {
             loan.setDisbursementIdempotencyKey(idempotencyKey);
         }
-
         if (request.getRemarks() != null && !request.getRemarks().isBlank()) {
             loan.setRemarks(request.getRemarks());
         }
 
         persistEmiSchedule(loan, disbursementDate);
-
         loanStateMachine.validateTransition(LoanStatus.DISBURSED, LoanStatus.ACTIVE);
         loan.setLoanStatus(LoanStatus.ACTIVE);
-
         Loan savedLoan = loanRepository.save(loan);
 
         Long customerUserId = null;
         try {
             customerUserId = savedLoan.getCustomer().getUser().getUserId();
         } catch (Exception ignored) {
+            log.debug("Customer user id not available for disbursement event. loanId={}", loanId);
         }
 
-        LoanDisbursedEvent disbursedEvent = new LoanDisbursedEvent(
-                savedLoan.getLoanId(),
-                customerUserId,
-                savedLoan.getLoanAmount(),
-                disbursementDate
-        );
-        eventPublisher.publishEvent(disbursedEvent);
-        outboxService.enqueue("LOAN", String.valueOf(savedLoan.getLoanId()),
-                "LoanDisbursed", disbursedEvent);
+        LoanDisbursedEvent event = new LoanDisbursedEvent(
+                savedLoan.getLoanId(), customerUserId, savedLoan.getLoanAmount(), disbursementDate);
+        eventPublisher.publishEvent(event);
+        outboxService.enqueue("LOAN", String.valueOf(savedLoan.getLoanId()), "LoanDisbursed", event);
 
         log.info("Loan disbursed successfully. loanId={}", loanId);
         return loanMapper.toResponseDto(savedLoan);
@@ -124,35 +108,36 @@ public class LoanDisbursementServiceImpl implements LoanDisbursementService {
             emiScheduleRepository.deleteAll(existing);
         }
 
-        BigDecimal balance = loan.getLoanAmount();
+        BigDecimal balance = loan.getLoanAmount().setScale(2, RoundingMode.HALF_UP);
         BigDecimal monthlyRate = loan.getInterestRate()
-                .divide(BigDecimal.valueOf(12 * 100), 10, RoundingMode.HALF_UP);
-        BigDecimal emi = loan.getEmi();
+                .divide(BigDecimal.valueOf(1200), 10, RoundingMode.HALF_UP);
+        BigDecimal normalEmi = loan.getEmi().setScale(2, RoundingMode.HALF_UP);
         int tenure = loan.getTenureMonths();
-
-        List<EmiSchedule> schedules = new ArrayList<>();
+        List<EmiSchedule> schedules = new ArrayList<>(tenure);
 
         for (int month = 1; month <= tenure; month++) {
-            BigDecimal interest = balance.multiply(monthlyRate)
-                    .setScale(2, RoundingMode.HALF_UP);
+            BigDecimal interest = balance.multiply(monthlyRate).setScale(2, RoundingMode.HALF_UP);
+            BigDecimal principal;
+            BigDecimal installmentAmount;
 
-            BigDecimal principal = emi.subtract(interest)
-                    .setScale(2, RoundingMode.HALF_UP);
-
-            if (principal.compareTo(balance) > 0) {
+            // The final installment absorbs paise-level rounding so principal closes exactly at zero.
+            if (month == tenure) {
                 principal = balance;
+                installmentAmount = principal.add(interest).setScale(2, RoundingMode.HALF_UP);
+            } else {
+                principal = normalEmi.subtract(interest).setScale(2, RoundingMode.HALF_UP);
+                if (principal.compareTo(balance) > 0) {
+                    principal = balance;
+                }
+                installmentAmount = normalEmi;
             }
 
             balance = balance.subtract(principal).setScale(2, RoundingMode.HALF_UP);
-            if (balance.compareTo(BigDecimal.ZERO) < 0) {
-                balance = BigDecimal.ZERO;
-            }
-
             schedules.add(EmiSchedule.builder()
                     .loan(loan)
                     .installmentNumber(month)
                     .dueDate(disbursementDate.plusMonths(month))
-                    .emiAmount(emi)
+                    .emiAmount(installmentAmount)
                     .principalComponent(principal)
                     .interestComponent(interest)
                     .outstandingPrincipalAfter(balance)
