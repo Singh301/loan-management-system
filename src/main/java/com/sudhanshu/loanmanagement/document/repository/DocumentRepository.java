@@ -1,0 +1,17 @@
+package com.sudhanshu.loanmanagement.document.repository;
+
+import com.sudhanshu.loanmanagement.document.entity.Document;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface DocumentRepository
+        extends JpaRepository<Document, Long> {
+
+    List<Document> findByCustomerCustomerId(Long customerId);
+
+}
+
+
+
+

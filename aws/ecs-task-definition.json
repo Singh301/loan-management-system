@@ -1,0 +1,60 @@
+{
+  "family": "loan-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "arn:aws:iam::ACCOUNT_ID:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::ACCOUNT_ID:role/ecsTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "loan-management-system",
+      "image": "ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com/loan-management-system:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        { "name": "SPRING_PROFILES_ACTIVE", "value": "prod" },
+        { "name": "JWT_EXPIRATION", "value": "86400000" },
+        { "name": "JWT_REFRESH_EXPIRATION", "value": "604800000" }
+      ],
+      "secrets": [
+        {
+          "name": "DB_URL",
+          "valueFrom": "arn:aws:ssm:ap-south-1:ACCOUNT_ID:parameter/loan/DB_URL"
+        },
+        {
+          "name": "DB_USERNAME",
+          "valueFrom": "arn:aws:ssm:ap-south-1:ACCOUNT_ID:parameter/loan/DB_USERNAME"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "valueFrom": "arn:aws:ssm:ap-south-1:ACCOUNT_ID:parameter/loan/DB_PASSWORD"
+        },
+        {
+          "name": "JWT_SECRET",
+          "valueFrom": "arn:aws:ssm:ap-south-1:ACCOUNT_ID:parameter/loan/JWT_SECRET"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/loan-management-system",
+          "awslogs-region": "ap-south-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "healthCheck": {
+        "command": ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 90
+      }
+    }
+  ]
+}

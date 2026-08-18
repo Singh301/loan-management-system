@@ -1,0 +1,42 @@
+name: Security Scan
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  schedule:
+    - cron: '0 6 * * 1'
+
+jobs:
+  trivy:
+    name: Trivy FS + Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          severity: 'CRITICAL,HIGH'
+          exit-code: '1'
+          ignore-unfixed: true
+
+  trivy-image:
+    name: Trivy Docker Image (on main)
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t loan-management-system:scan .
+      - name: Scan image
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: 'image'
+          image-ref: 'loan-management-system:scan'
+          severity: 'CRITICAL,HIGH'
+          exit-code: '0'
+          ignore-unfixed: true
